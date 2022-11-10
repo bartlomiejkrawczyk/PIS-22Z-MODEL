@@ -2,13 +2,26 @@ plugins {
 	id 'java'
 	id 'checkstyle'
 	id 'groovy'
+	id 'maven-publish'
 }
 
 group 'com.example'
 version '1.0-SNAPSHOT'
 
+java {
+	withSourcesJar()
+}
+
 repositories {
 	mavenCentral()
+	maven {
+		url = uri("http://localhost:8081/repository/maven-private")
+		credentials {
+			username = nexusUsername
+			password = nexusPassword
+		}
+		allowInsecureProtocol = true
+	}
 }
 
 dependencies {
@@ -29,5 +42,27 @@ test {
 checkstyleMain {
 	source = fileTree('.') {
 		excludes = ['.*/**', 'gradle*', 'build/**', '*.iml', '*.log', '**/*.jar', 'data/**']
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+	repositories {
+		maven {
+			if (project.version.endsWith('-SNAPSHOT')) {
+				url = "http://localhost:8081/repository/maven-snapshots"
+			} else {
+				url = "http://localhost:8081/repository/maven-releases"
+			}
+			credentials {
+				username = nexusUsername
+				password = nexusPassword
+			}
+			allowInsecureProtocol = true
+		}
 	}
 }
