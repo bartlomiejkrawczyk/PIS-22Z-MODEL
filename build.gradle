@@ -3,6 +3,7 @@ plugins {
 	id 'checkstyle'
 	id 'groovy'
 	id 'maven-publish'
+	id 'org.sonarqube' version '3.4.0.2513'
 }
 
 group 'com.example'
@@ -64,5 +65,11 @@ publishing {
 			}
 			allowInsecureProtocol = true
 		}
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "pis22z_model_AYRoGmCNjSfUiXMQwm2Y"
 	}
 }
