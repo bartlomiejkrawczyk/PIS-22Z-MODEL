@@ -1,0 +1,68 @@
+plugins {
+	id 'java'
+	id 'checkstyle'
+	id 'groovy'
+	id 'maven-publish'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+java {
+	withSourcesJar()
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url = uri("http://localhost:8081/repository/maven-private")
+		credentials {
+			username = nexusUsername
+			password = nexusPassword
+		}
+		allowInsecureProtocol = true
+	}
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+
+	testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+	testImplementation 'org.codehaus.groovy:groovy-all:3.0.13'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+checkstyleMain {
+	source = fileTree('.') {
+		excludes = ['.*/**', 'gradle*', 'build/**', '*.iml', '*.log', '**/*.jar', 'data/**']
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+	repositories {
+		maven {
+			if (project.version.endsWith('-SNAPSHOT')) {
+				url = "http://localhost:8081/repository/maven-snapshots"
+			} else {
+				url = "http://localhost:8081/repository/maven-releases"
+			}
+			credentials {
+				username = nexusUsername
+				password = nexusPassword
+			}
+			allowInsecureProtocol = true
+		}
+	}
+}
