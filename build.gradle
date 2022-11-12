@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'checkstyle'
 	id 'groovy'
+	id 'jacoco'
 	id 'maven-publish'
 	id 'org.sonarqube' version '3.4.0.2513'
 }
@@ -38,6 +39,14 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+jacocoTestReport {
+	dependsOn(test)
+	getExecutionData().setFrom(fileTree(buildDir).include("/jacoco/*.exec"))
+	reports {
+		xml.enabled true
+	}
 }
 
 checkstyleMain {
