@@ -21,7 +21,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Concept {
 
-	long id;
+	int id;
 	String keyPhrase;
 	String summary;
 	List<Paragraph> paragraphs;
