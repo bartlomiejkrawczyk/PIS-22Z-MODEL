@@ -1,5 +1,6 @@
-package com.example.model.exam;
+package com.example.model.exam.answer;
 
+import java.util.Optional;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,9 +19,17 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TruthOrFalseExercise implements Exercise {
+public class ChoiceAnswer implements Answer {
 
-	long id;
-	String question;
+	int number;
+	String content;
+
 	boolean correct;
+
+	@Builder.Default
+	Boolean checked = null;
+
+	public boolean isCorrectSelected() {
+		return Optional.ofNullable(checked).orElse(false) == correct;
+	}
 }
