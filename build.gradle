@@ -37,6 +37,7 @@ dependencies {
 
 	testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
 	testImplementation 'org.codehaus.groovy:groovy-all:3.0.13'
+	testImplementation 'net.bytebuddy:byte-buddy:1.12.17'
 }
 
 test {
