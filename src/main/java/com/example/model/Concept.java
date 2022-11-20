@@ -1,5 +1,6 @@
 package com.example.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,5 +25,7 @@ public class Concept {
 	int id;
 	String keyPhrase;
 	String summary;
-	List<Paragraph> paragraphs;
+
+	@Builder.Default
+	List<Paragraph> paragraphs = new ArrayList<>();
 }

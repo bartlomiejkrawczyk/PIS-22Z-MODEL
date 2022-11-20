@@ -1,5 +1,6 @@
 package com.example.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,5 +24,7 @@ public class Section {
 
 	int id;
 	String name;
-	List<Section> subSections;
+
+	@Builder.Default
+	List<Section> subSections = new ArrayList<>();
 }
