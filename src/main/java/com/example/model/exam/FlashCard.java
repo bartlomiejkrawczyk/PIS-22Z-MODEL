@@ -1,5 +1,8 @@
 package com.example.model.exam;
 
+import com.example.model.Definition;
+import com.example.model.multimedia.DisplayableFile;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -19,9 +22,28 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MultipleTruthOrFalseExercise implements Exercise {
+public class FlashCard implements Exercise {
 
-	long id;
+	int id;
 	String question;
-	List<TruthOrFalseAnswer> tasks;
+	DisplayableFile content;
+
+	@Builder.Default
+	List<Definition> definitions = new ArrayList<>();
+
+	String answer;
+
+	@Builder.Default
+	boolean shown = false;
+
+
+	@Override
+	public int getPoints() {
+		return 0;
+	}
+
+	@Override
+	public int getScore() {
+		return 0;
+	}
 }

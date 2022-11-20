@@ -1,6 +1,5 @@
-package com.example.model;
+package com.example.model.exam.answer;
 
-import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import org.apache.commons.lang3.StringUtils;
 
 @Builder
 @NoArgsConstructor
@@ -19,10 +19,17 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Concept {
+public class BlankAnswer implements Answer {
 
 	int id;
-	String keyPhrase;
-	String summary;
-	List<Paragraph> paragraphs;
+	String start;
+	String end;
+	String answer;
+
+	@Builder.Default
+	String entered = null;
+
+	public boolean isCorrectSelected() {
+		return StringUtils.equals(entered, answer);
+	}
 }

@@ -20,7 +20,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
 
-	long id;
+	int id;
 	String login;
 	String email;
 	byte[] password;

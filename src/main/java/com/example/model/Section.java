@@ -21,7 +21,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Section {
 
-	long id;
+	int id;
 	String name;
 	List<Section> subSections;
 }

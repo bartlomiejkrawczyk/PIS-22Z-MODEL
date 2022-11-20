@@ -1,4 +1,4 @@
-package com.example.model.exam;
+package com.example.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -18,9 +18,9 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TruthOrFalseExercise implements Exercise {
+public class Definition {
 
-	long id;
-	String question;
-	boolean correct;
+	int id;
+	String concept;
+	String content;
 }
