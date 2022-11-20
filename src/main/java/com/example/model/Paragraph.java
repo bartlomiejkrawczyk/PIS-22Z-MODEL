@@ -22,7 +22,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Paragraph {
 
-	String number;
+	int number;
 	int sequentialNumber;
 	String header;
 	String description;
