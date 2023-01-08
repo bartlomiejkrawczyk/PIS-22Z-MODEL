@@ -23,7 +23,7 @@ public class User {
 	int id;
 	String login;
 	String email;
-	byte[] password;
-	byte[] salt;
+	String password;
+	String salt;
 	int type;
 }

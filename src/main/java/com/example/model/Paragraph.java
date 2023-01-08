@@ -1,6 +1,7 @@
 package com.example.model;
 
 import com.example.model.multimedia.Multimedia;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -22,9 +23,11 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Paragraph {
 
-	String number;
+	int number;
 	int sequentialNumber;
 	String header;
 	String description;
-	List<Multimedia> multimedia;
+
+	@Builder.Default
+	List<Multimedia> multimedia = new ArrayList<>();
 }
