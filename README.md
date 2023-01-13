@@ -177,6 +177,12 @@ classDiagram
 
 ```
 
+
+## Diagram Klas
+
+![](./image.png)
+![](./model.png)
+
 ## Aby opublikować wszystkiego klasy, aby móc korzystać z nich w innych projektach - API i w aplikacji na Androida - należy wykonać polecenie
 
 ```bash
